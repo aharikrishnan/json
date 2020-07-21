@@ -1,28 +1,37 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+
+  <head>
     <!-- when using the mode "code", it's important to specify charset utf-8 -->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="keywords" content="json, editor, minimal, distraction free, formatter, online, format, parser, diff, json editor, json editor online, online json editor, javascript, javascript object notation, tools, tool, json tools, treeview, open source, free, json parser, json parser online, json formatter, json formatter online, online json formatter, online json parser, format json online">
+    <meta name="author" content="Hari">
+    <link data-name="vs/editor/editor.main" rel="stylesheet" href="assets/monaco-editor/min/vs/editor/editor.main.css">
+    <style>
+      body {
+        margin: 0;
+        padding-top: 40px;
+        position: fixed;
+      }
+      #jsoneditor{
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
 
-    <link href="bower_components/jsoneditor/dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
-    <script src="bower_components/jsoneditor/dist/jsoneditor.min.js"></script>
-</head>
-<body>
-    <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
-
+  <body>
+    <div id="jsoneditor"></div>
+    <script>var require = { paths: { 'vs': 'assets/monaco-editor/min/vs' } };</script>
+    <script src="assets/monaco-editor/min/vs/loader.js"></script>
+    <script src="assets/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+    <script src="assets/monaco-editor/min/vs/editor/editor.main.js"></script>
     <script>
-        // create the editor
-        const container = document.getElementById("jsoneditor")
-        const options = {}
-        const editor = new JSONEditor(container, options)
-
-        // set json
-        const initialJson = {}
-        editor.set(initialJson)
-
-        // get json
-        const updatedJson = editor.get()
+      monaco.editor.create(document.getElementById("jsoneditor"), {
+        language: "json",
+        theme: "vs",
+        automaticLayout: true,
+      });
     </script>
-</body>
+  </body>
 </html>
-
